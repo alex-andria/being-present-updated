@@ -2,7 +2,7 @@ import React from "react";
 
 function Journal({ journal, openEntry, setOpenEntry }) {
     //test
-    console.log(journal);
+    // console.log(journal.mind);
 
     function handleBackButton() {
         setOpenEntry(!openEntry);
@@ -20,7 +20,7 @@ function Journal({ journal, openEntry, setOpenEntry }) {
                     {/* <form onSubmit={handleSubmit}> */}
                     {/* <button onClick={handleBackButton}>Back</button> */}
                     <div className="modal-body">
-                        <p>Mind: {journal.mind} Body: {journal.body}</p>
+                        <p>Mind: {journal.mind.toString()} Body: {journal.body.toString()}</p>
                         <img src={journal.journal_image} alt=""/>
                         <p>{journal.journal_entry}</p>
                         <br></br>

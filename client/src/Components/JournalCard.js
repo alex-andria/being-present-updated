@@ -3,7 +3,7 @@ import Journal from "./Journal";
 
 function JournalCard({ journal}) {
     const [openEntry, setOpenEntry] = useState(false);
-    console.log(journal)
+    // console.log(journal)
 
     if (openEntry === true) {
         return (

@@ -78,7 +78,7 @@ function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) 
                 </div>
                 <div className="col-6">
                   <label name="Body input">Body Activity:</label>
-                  <select id="myMindSelect" className="form-control form-control-sm" onChange={(e) => setMind(e.target.value)}>
+                  <select id="myMindSelect" className="form-control form-control-sm" onChange={(e) => setBody(e.target.value)}>
                     <option value="true">True</option>
                     <option value="false">False</option>
                   </select>
