@@ -16,10 +16,19 @@ function App() {
     //auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => {setUser(user)});
       }
     });
   }, []);
+
+  // useEffect(() => {
+  //   fetch(`/journals/:id/${user.id}`)
+  //     .then((r) => r.json())
+  //     .then((journals) => {
+  //       setJournals(journals);
+  //       //   history.push("/")
+  //     });
+  // }, []);
 
 
 // FETCH FOR USER'S JOURNALS???
@@ -29,7 +38,23 @@ function App() {
   //   // auto-fetch journals
   //   fetch("/me").then((r) => {
   //     if (r.ok) {
-  //       r.json().then((user) => setJournals(user.journals));
+  //       r.json().then((user) => {
+  //         console.log("user fetch 2:", user)
+  //         setJournals(user.journals)
+  //       });
+  //     }
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   //auto-login
+  //   fetch("/journals").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((journals) => {
+  //         return journals.filter((journal) => {
+
+  //         })
+  //       });
   //     }
   //   });
   // }, []);
@@ -37,12 +62,12 @@ function App() {
 
 // CALLBACK FUNCTION TO PASS DOWN TO JOURNAL ENTRY POST REQUEST
 
-// function addJournalEntry(newEntry) {
-//   setJournals([...journals, newEntry])
-// }
+function addJournalEntry(newEntry) {
+  setJournals([...journals, newEntry])
+}
 
 
-  console.log(journals);
+  console.log("journals", journals);
 
   if (!user) return <LogInPage onLogin={setUser} />
 

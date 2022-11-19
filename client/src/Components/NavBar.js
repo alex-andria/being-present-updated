@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles";
 import LogOutButton from "./LogOutButton";
-import Logo1 from '../Logo1.png';
 
 function NavBar({user, setUser}) {
   return(

@@ -43,12 +43,6 @@ function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) 
     setAddEntry(!addEntry);
   }
 
-  console.log("user: " + user);
-  //opens modal
-  // if (!addEntry) {
-  //   return null
-  // }
-
   return (
     <>
       {errorMessage}
@@ -67,39 +61,38 @@ function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) 
             <div className="modal-body">
               <label name="Date input">What is the date today?</label>
               <input
+                type="date"
                 className="form-control form-control-sm"
                 value={journal_date}
                 onChange={(e) => setJournalDate(e.target.value)}
                 name="Journal date input"
               ></input>
               <br></br>
-              <br></br>
-              <label name="Mind input">Mind Activity:</label>
-              <input
-                className="form-control form-control-sm"
-                value={mind}
-                onChange={(e) => setMind(e.target.value)}
-                name="Mind input"
-              ></input>
-              <br></br>
-              <br></br>
-              <label name="Body input">Body Activity:</label>
-              <input
-                className="form-control form-control-sm"
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-                name="Body input"
-              ></input>
-              <br></br>
+              <div className="row">
+                <div className="col-6">
+                  <label name="Mind input">Mind Activity:</label>
+                  <select id="myMindSelect" className="form-control form-control-sm" onChange={(e) => setMind(e.target.value)}>
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                  </select>
+                </div>
+                <div className="col-6">
+                  <label name="Body input">Body Activity:</label>
+                  <select id="myMindSelect" className="form-control form-control-sm" onChange={(e) => setMind(e.target.value)}>
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                  </select>
+                </div>
+              </div>
               <br></br>
               <label name="Body input">Journal Image:</label>
               <input
                 className="form-control form-control-sm"
+                type="file"
                 value={journal_image}
                 onChange={(e) => setJournalImage(e.target.value)}
                 name="Journal image input"
               ></input>
-              <br></br>
               <br></br>
               <label name="Body input">How did you take time for yourself today?</label>
               <textarea
@@ -107,8 +100,9 @@ function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) 
                 value={journal_entry}
                 onChange={(e) => setJournalEntry(e.target.value)}
                 name="Journal entry input"
+                rows="10"
+                height="100%"
               ></textarea>
-              <br></br>
               <br></br>
             </div>
             <div className="modal-footer">

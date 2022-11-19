@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import Journal from "./Journal";
 
-function JournalCard({journal}){
+function JournalCard({ journal}) {
+    const [openEntry, setOpenEntry] = useState(false);
     console.log(journal)
 
-    return(
+    if (openEntry === true) {
+        return (
+            <Journal
+                setOpenEntry={setOpenEntry}
+                openEntry={openEntry}
+                journal={journal}
+            />
+        );
+    }
+
+    return (
         <>
-            <p>{journal.journal_entry}</p>
+            <div className="journal-entry" onClick={() => setOpenEntry(true)}>
+                <div className="journal-image"><p>{journal.journal_date}</p></div>
+            </div>
         </>
     )
 }
