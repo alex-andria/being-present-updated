@@ -8,7 +8,7 @@ function LogOutButton({setUser}){
           }
         });
       }
-      return <button onClick={handleLogOut}>Log Out</button>;
+      return <button className="btn btn-primary" onClick={handleLogOut}>Log Out</button>;
 }
 
 export default LogOutButton;
