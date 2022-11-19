@@ -44,8 +44,12 @@ function MainPage({ user, setUser, journals, addJournalEntry }) {
           <br></br>
           <div className="container journal-entries">
             <div className="row row-cols-auto justify-content-center gy-5">
-              {user.journals.map((journal) => {
+              {/* {user.journals.map((journal) => {
                 return <JournalCard  journal={journal} key={journal.id} />;
+              })} */}
+              {/* elvis check on journal id key */}
+              {journals.map((journal) => {
+                return <JournalCard  journal={journal} key={journal?.id} />;
               })}
             </div>
           </div>

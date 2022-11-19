@@ -21,55 +21,32 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   fetch(`/journals/:id/${user.id}`)
-  //     .then((r) => r.json())
-  //     .then((journals) => {
-  //       setJournals(journals);
-  //       //   history.push("/")
-  //     });
-  // }, []);
-
-
-// FETCH FOR USER'S JOURNALS???
-// i'm hoping it can be this easy, but unsure if the user.journals will work right off the bat, may need to stick some console logs in to see where it's coming back
-
-  // useEffect(() => {
-  //   // auto-fetch journals
-  //   fetch("/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => {
-  //         console.log("user fetch 2:", user)
-  //         setJournals(user.journals)
-  //       });
-  //     }
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   //auto-login
-  //   fetch("/journals").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((journals) => {
-  //         return journals.filter((journal) => {
-
-  //         })
-  //       });
-  //     }
-  //   });
-  // }, []);
-
+  function onLogIn(loggedInUser) {
+    setUser(loggedInUser)
+    fetch('/journals').then((r) => {
+      console.log("***inside journals")
+      if (r.ok) {
+        r.json().then((journals) => {
+          console.log("journals:", journals)
+          console.log("user:", loggedInUser)
+          setJournals(journals.filter((journal) => journal.user.id === loggedInUser.id))
+        })
+      }
+    })
+  }
 
 // CALLBACK FUNCTION TO PASS DOWN TO JOURNAL ENTRY POST REQUEST
-
 function addJournalEntry(newEntry) {
   setJournals([...journals, newEntry])
 }
 
 
-  console.log("journals", journals);
+  // console.log("journals", journals);
 
-  if (!user) return <LogInPage onLogin={setUser} />
+  // if (!user) return <LogInPage onLogin={setUser} />
+
+  // annemarie changes
+  if (!user) return <LogInPage onLogin={onLogIn} />
 
   return (
     // <div className="App">
