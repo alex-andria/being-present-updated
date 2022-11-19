@@ -1,13 +1,28 @@
 import React, { useState } from "react";
+import Axios from 'axios'
 
 
 function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) {
   const [mind, setMind] = useState(false);
   const [body, setBody] = useState(false);
+  const [url, setUrl] = useState("");
   const [journal_image, setJournalImage] = useState("");
   const [journal_entry, setJournalEntry] = useState("");
   const [journal_date, setJournalDate] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  function handleUpload(e) {
+    e.preventDefault()
+    const data = new FormData();
+    data.append('file', journal_image);
+    data.append('upload_preset', 'being_present');
+
+    Axios.post('https://api.cloudinary.com/v1_1/jenna1568/image/upload', data)
+      .then((response) => {
+          setUrl(response.data.url);
+      })
+      .catch((err) => console.log(err));
+  } 
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,7 +31,7 @@ function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) 
     const journal = {
       mind: mind,
       body: body,
-      journal_image: journal_image,
+      journal_image: url,
       user_id: user.id,
       journal_entry: journal_entry,
       journal_date: journal_date,
@@ -94,10 +109,14 @@ function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) 
               <input
                 className="form-control form-control-sm"
                 type="file"
-                value={journal_image}
-                onChange={(e) => setJournalImage(e.target.value)}
+                accept='image/*'
+                // value={journal_image}
+                id= 'journal_image_upload'
+                onChange={(e) => setJournalImage(e.target.files[0])}
+                // onChange={(e) => console.log("e.target.files:", e.target.files[0])}
                 name="Journal image input"
               ></input>
+              <button className="btn btn-primary" onClick={handleUpload}>Upload Photo</button>
               <br></br>
               <label name="Body input">How did you take time for yourself today?</label>
               <textarea
