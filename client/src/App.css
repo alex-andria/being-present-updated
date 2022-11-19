@@ -69,6 +69,7 @@ body {
 
 .journal-list {
   padding: 10px;
+  margin: 5px;
 }
 
 .journal-entry {
@@ -94,4 +95,40 @@ body {
 .journal-image p:hover {
   text-align: center;
   color: rgba(178, 184, 163, 0.5);
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 500px;
+  background-color: #FFF5EB;
+}
+
+.modal-header, .modal-footer {
+  padding: 10px;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #FFF5EB;
+  border-top: 1px solid #FFF5EB;
+}
+
+.modal-body p {
+  word-wrap: break-word;
 }

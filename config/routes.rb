@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
+  # get "/journals/:id", to: "users#show_user_journals"
+
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
 

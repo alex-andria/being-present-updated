@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Button } from "../styles";
+// import { Link } from "react-router-dom";
+// import styled from "styled-components";
+// import { Button } from "../styles";
 import LogOutButton from "./LogOutButton";
-import Logo1 from '../Logo1.png';
 
 function NavBar({user, setUser}) {
   return(
@@ -38,29 +37,29 @@ function NavBar({user, setUser}) {
 }
 export default NavBar;
 
-const Wrapper = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-`;
+// const Wrapper = styled.header`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 8px;
+// `;
 
-const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color: deeppink;
-  margin: 0;
-  line-height: 1;
+// const Logo = styled.h1`
+//   font-family: "Permanent Marker", cursive;
+//   font-size: 3rem;
+//   color: deeppink;
+//   margin: 0;
+//   line-height: 1;
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
+//   a {
+//     color: inherit;
+//     text-decoration: none;
+//   }
+// `;
 
-const Nav = styled.nav`
-  display: flex;
-  gap: 4px;
-  position: absolute;
-  right: 8px;
-`;
+// const Nav = styled.nav`
+//   display: flex;
+//   gap: 4px;
+//   position: absolute;
+//   right: 8px;
+// `;
