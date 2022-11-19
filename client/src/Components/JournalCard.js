@@ -1,7 +1,7 @@
 import React from "react";
 
 function JournalCard({journal}){
-    console.log(journal)
+    console.log("journal card:", journal)
 
     return(
         <>

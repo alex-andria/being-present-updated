@@ -5,7 +5,7 @@ import CreateJournalEntry from "./CreateJournal";
 import JournalCard from "./JournalCard";
 // import Logo from "./Logo1.png"
 
-function MainPage({ user, setUser, journals, addJournalEntry }) {
+function MainPage({ user, onLogIn, journals, onAddJournalEntry }) {
 
   // modal visible
   const [addEntry, setAddEntry] = useState(false);
@@ -30,7 +30,7 @@ function MainPage({ user, setUser, journals, addJournalEntry }) {
         user={user}
         setAddEntry={setAddEntry}
         addEntry={addEntry}
-        onAddJournalEntry = {addJournalEntry}
+        onAddJournalEntry = {onAddJournalEntry}
       />
     );
   }
@@ -76,7 +76,7 @@ function MainPage({ user, setUser, journals, addJournalEntry }) {
           return <JournalCard journal={journal} key={journal.id} />;
         })} */}
         {journals.map((journal) => {
-          return <JournalCard journal={journal} key={journal.id} />;
+          return <JournalCard journal={journal} key={journal?.id} />;
         })}
         {/* List of Journal-card */}
         <div className="journal-list">

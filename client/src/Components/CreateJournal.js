@@ -31,7 +31,9 @@ function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) 
     }).then((r) => {
       setAddEntry(false);
       if (r.ok) {
-        // console.log(r);
+        const jsonResp = r.json()
+        console.log("journal entry resp", jsonResp);
+        return jsonResp
       } else {
         r.json().then((err) => setErrorMessage(err.errors));
       }

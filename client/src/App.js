@@ -12,39 +12,46 @@ function App() {
   const [user, setUser] = useState(null);
   const [journals, setJournals] = useState([]);
 
+  console.log("#1")
   useEffect(() => {
     //auto-login
+    console.log("#2")
+
     fetch("/me").then((r) => {
+      console.log("***inside fetch /me")
       if (r.ok) {
+        console.log("r:", r)
         r.json().then((user) => setUser(user));
       }
-    });
-  }, []);
+    })
+    }, []);
 
+// CALLBACK FUNCTION TO PASS TO LOGIN SO STATE RESETS AT THE TOP LEVEL COMPONENT INSTEAD (NEEDED THIS FOR JOURNALS)
 
-// FETCH FOR USER'S JOURNALS???
-// i'm hoping it can be this easy, but unsure if the user.journals will work right off the bat, may need to stick some console logs in to see where it's coming back
-
-  // useEffect(() => {
-  //   // auto-fetch journals
-  //   fetch("/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setJournals(user.journals));
-  //     }
-  //   });
-  // }, []);
-
+function onLogIn(loggedInUser) {
+  setUser(loggedInUser)
+  fetch('/journals').then((r) => {
+    console.log("***inside journals")
+    if (r.ok) {
+      r.json().then((journals) => {
+        console.log("journals:", journals)
+        console.log("user:", loggedInUser)
+        setJournals(journals.filter((journal) => journal.user.id === loggedInUser.id))
+      })
+    }
+  })
+}
 
 // CALLBACK FUNCTION TO PASS DOWN TO JOURNAL ENTRY POST REQUEST
 
-// function addJournalEntry(newEntry) {
-//   setJournals([...journals, newEntry])
-// }
+function onAddJournalEntry(newEntry) {
+  setJournals([...journals, newEntry])
+}
 
 
-  console.log(journals);
+  // console.log(journals);
 
-  if (!user) return <LogInPage onLogin={setUser} />
+  if (!user) return <LogInPage onLogin={onLogIn} />
 
   return (
     // <div className="App">
@@ -54,7 +61,7 @@ function App() {
       <NavBar user={user} setUser={setUser}/>
       <main>
         <Routes>
-          <Route path="/" element={<MainPage user={user} setUser={setUser} journals={journals} addJournalEntry={addJournalEntry}/>} />
+          <Route path="/" element={<MainPage user={user} onLogIn={onLogIn} journals={journals} onAddJournalEntry={onAddJournalEntry}/>} />
         </Routes>
       </main>
     </>
