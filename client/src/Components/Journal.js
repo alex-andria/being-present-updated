@@ -14,8 +14,6 @@ function Journal({ journal, openEntry, setOpenEntry }) {
         body = "body"
     }
 
-    
-
     function handleBackButton() {
         setOpenEntry(!openEntry);
     }

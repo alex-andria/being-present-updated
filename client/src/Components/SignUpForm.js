@@ -39,6 +39,8 @@ function SignUpForm({ onLogin }) {
   return (
     <div className="container justify-content-center">
       <div className="imgcontainer">
+        <br></br>
+        <h1>Being Present</h1>
         <img src={Logo1} alt="Logo" className="avatar" />
       </div>
 

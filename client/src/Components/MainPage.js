@@ -31,16 +31,16 @@ function MainPage({ user, setUser, journals, addJournalEntry }) {
         </div>
         <br></br>
         <div className="add-journal-entry">
-          <h2>Be present. Add your entry.</h2>
+          <h2>How were you present with yourself today?</h2>
           {/* Create New Journal */}
           <button onClick={() => setAddEntry(true)} className="btn btn-primary">
-            Add Journal
+            Today I...
           </button>
         </div>
 
         <br></br>
         <div className="journal-list">
-          <h2>Journal List Below:</h2>
+          <h2>Journal Entries:</h2>
           <br></br>
           <div className="container journal-entries">
             <div className="row row-cols-auto justify-content-center gy-5">

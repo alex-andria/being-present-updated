@@ -61,6 +61,8 @@ function LogInPage({ onLogin }) {
     return (
         <div className="container justify-content-center">
             <div className="imgcontainer">
+                <br></br>
+                <h1>Being Present</h1>
                 <img src={Logo1} alt="Logo" className="avatar" />
             </div>
             <form onSubmit={handleSubmit}>
@@ -94,7 +96,7 @@ function LogInPage({ onLogin }) {
                         type="button"
                         className="cancelbt btn btn-primary btn-lg"
                     >
-                        Create Account!
+                        Sign Up!
                     </button>
                 </div>
 
