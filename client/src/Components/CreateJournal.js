@@ -71,7 +71,7 @@ function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) 
         <div className="modal-content">
           <div className="modal-header">
             <div className="modal-title">
-              <h4> Enter Journal: </h4>
+              <h4> Journal Entry: </h4>
               {/* <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={props.onClose}></button> */}
             </div>
           </div>
@@ -79,7 +79,7 @@ function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) 
           {/* <button onClick={handleBackButton}>Back</button> */}
           <form>
             <div className="modal-body">
-              <label name="Date input">What is the date today?</label>
+              <label name="Date input">Date:</label>
               <input
                 type="date"
                 className="form-control form-control-sm"
