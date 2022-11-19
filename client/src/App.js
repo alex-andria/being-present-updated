@@ -10,7 +10,7 @@ import "./App.css";
 function App() {
   // const [count, setCount] = useState(0);
   const [user, setUser] = useState(null);
-  const [journals, setJournals] = useState([])
+  const [journals, setJournals] = useState([]);
 
   useEffect(() => {
     //auto-login
@@ -22,14 +22,24 @@ function App() {
   }, []);
 
 
-  useEffect(() => {
-    // auto-fetch journals
-    fetch("/journals").then((r) => {
-      if (r.ok) {
-        r.json().then((journals) => setJournals(journals));
-      }
-    });
-  }, []);
+// FETCH FOR USER'S JOURNALS???
+// i'm hoping it can be this easy, but unsure if the user.journals will work right off the bat, may need to stick some console logs in to see where it's coming back
+
+  // useEffect(() => {
+  //   // auto-fetch journals
+  //   fetch("/me").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setJournals(user.journals));
+  //     }
+  //   });
+  // }, []);
+
+
+// CALLBACK FUNCTION TO PASS DOWN TO JOURNAL ENTRY POST REQUEST
+
+// function addJournalEntry(newEntry) {
+//   setJournals([...journals, newEntry])
+// }
 
 
   console.log(journals);
@@ -44,7 +54,7 @@ function App() {
       <NavBar user={user} setUser={setUser}/>
       <main>
         <Routes>
-          <Route path="/" element={<MainPage user={user} setUser={setUser} journals={journals} setJournals={setJournals} />} />
+          <Route path="/" element={<MainPage user={user} setUser={setUser} journals={journals} addJournalEntry={addJournalEntry}/>} />
         </Routes>
       </main>
     </>

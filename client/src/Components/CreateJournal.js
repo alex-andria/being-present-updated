@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-function CreateJournalEntry({ setShowCreateJournalTab, user, showCreateJournalTab}) {
+
+function CreateJournalEntry({ addEntry, setAddEntry, user, onAddJournalEntry }) {
   const [mind, setMind] = useState(false);
   const [body, setBody] = useState(false);
   const [journal_image, setJournalImage] = useState("");
@@ -10,6 +11,7 @@ function CreateJournalEntry({ setShowCreateJournalTab, user, showCreateJournalTa
 
   function handleSubmit(e) {
     e.preventDefault();
+
 
     const journal = {
       mind: mind,
@@ -27,80 +29,100 @@ function CreateJournalEntry({ setShowCreateJournalTab, user, showCreateJournalTa
       },
       body: JSON.stringify(journal),
     }).then((r) => {
-      setShowCreateJournalTab(false);
+      setAddEntry(false);
       if (r.ok) {
+        // console.log(r);
       } else {
         r.json().then((err) => setErrorMessage(err.errors));
       }
-    });
+    }).then(onAddJournalEntry);
+
   }
 
   function handleBackButton() {
-    setShowCreateJournalTab(!showCreateJournalTab);
+    setAddEntry(!addEntry);
   }
+
+  console.log("user: " + user);
+  //opens modal
+  // if (!addEntry) {
+  //   return null
+  // }
 
   return (
     <>
-      {/* <button onClick={handleBackButton}>Back</button> */}
-      <button onClick={handleBackButton}>Back</button>
-      <h1> Enter Journal: </h1>
-
       {errorMessage}
-      <form>
 
-        <label name="Date input">What is the date today?</label>
-        <input
-          value={journal_date}
-          onChange={(e) => setJournalDate(e.target.value)}
-          name="Journal date input"
-        ></input>
+      <div className="modal">
+        <div className="modal-content">
+          <div className="modal-header">
+            <div className="modal-title">
+              <h4> Enter Journal: </h4>
+              {/* <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={props.onClose}></button> */}
+            </div>
+          </div>
+          {/* <form onSubmit={handleSubmit}> */}
+          {/* <button onClick={handleBackButton}>Back</button> */}
+          <form>
+            <div className="modal-body">
+              <label name="Date input">What is the date today?</label>
+              <input
+                className="form-control form-control-sm"
+                value={journal_date}
+                onChange={(e) => setJournalDate(e.target.value)}
+                name="Journal date input"
+              ></input>
+              <br></br>
+              <br></br>
+              <label name="Mind input">Mind Activity:</label>
+              <input
+                className="form-control form-control-sm"
+                value={mind}
+                onChange={(e) => setMind(e.target.value)}
+                name="Mind input"
+              ></input>
+              <br></br>
+              <br></br>
+              <label name="Body input">Body Activity:</label>
+              <input
+                className="form-control form-control-sm"
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+                name="Body input"
+              ></input>
+              <br></br>
+              <br></br>
+              <label name="Body input">Journal Image:</label>
+              <input
+                className="form-control form-control-sm"
+                value={journal_image}
+                onChange={(e) => setJournalImage(e.target.value)}
+                name="Journal image input"
+              ></input>
+              <br></br>
+              <br></br>
+              <label name="Body input">How did you take time for yourself today?</label>
+              <textarea
+                className="form-control form-control-lg"
+                value={journal_entry}
+                onChange={(e) => setJournalEntry(e.target.value)}
+                name="Journal entry input"
+              ></textarea>
+              <br></br>
+              <br></br>
+            </div>
+            <div className="modal-footer">
+              <button
+                className="btn btn-primary"
+                onClick={handleSubmit}
+                type="submit"
+              >Fill your cup!</button>
+              <button className="btn btn-primary" onClick={handleBackButton}>Back</button>
 
-        <label name="Mind input">Mind Activity:</label>
-        <input
-          value={mind}
-          onChange={(e) => setMind(e.target.value)}
-          name="Mind input"
-        ></input>
-
-        <br></br>
-        <br></br>
-
-        <label name="Body input">Body Activity:</label>
-        <input
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          name="Body input"
-        ></input>
-
-        <br></br>
-        <br></br>
-
-        <label name="Body input">Journal Image:</label>
-        <input
-          value={journal_image}
-          onChange={(e) => setJournalImage(e.target.value)}
-          name="Journal image input"
-        ></input>
-
-        <br></br>
-        <br></br>
-
-        <label name="Body input">How did you take time for yourself today?</label>
-        <input
-          value={journal_entry}
-          onChange={(e) => setJournalEntry(e.target.value)}
-          name="Journal entry input"
-        ></input>
-
-        <br></br>
-        <br></br>
-
-        <input
-          onClick={handleSubmit}
-          type="submit"
-          value="Fill your cup!"
-        ></input>
-      </form>
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 }
