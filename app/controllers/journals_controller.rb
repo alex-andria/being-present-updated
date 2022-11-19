@@ -1,8 +1,11 @@
 class JournalsController < ApplicationController
+    # skip_before_action :authorize, only: [:create]
+    skip_before_action :authorize
+
 
     def index
         render json: Journal.all
-      end
+    end
   
     def show
         journal = Journal.find(params[:id])
@@ -10,7 +13,8 @@ class JournalsController < ApplicationController
     end 
     
     def create
-        journal = @current_user.journals.create!(journal_params)
+        # journal = @current_user.journals.create!(journal_params)
+        journal = Journal.create!(journal_params)
         render json: journal, status: :created
     end
     
