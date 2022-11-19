@@ -4,9 +4,22 @@ function Journal({ journal, openEntry, setOpenEntry }) {
     //test
     // console.log(journal.mind);
 
+    let mind = "";
+    let body = "";
+
+    if (journal.mind == true){
+        mind = "mind"
+    }
+    if (journal.body == true){
+        body = "body"
+    }
+
+    
+
     function handleBackButton() {
         setOpenEntry(!openEntry);
     }
+
 
     return (
         <>
@@ -20,7 +33,7 @@ function Journal({ journal, openEntry, setOpenEntry }) {
                     {/* <form onSubmit={handleSubmit}> */}
                     {/* <button onClick={handleBackButton}>Back</button> */}
                     <div className="modal-body">
-                        <p>Mind: {journal.mind.toString()} Body: {journal.body.toString()}</p>
+                        <p>{mind} {body}</p>
                         <img src={journal.journal_image} alt=""/>
                         <p>{journal.journal_entry}</p>
                         <br></br>
