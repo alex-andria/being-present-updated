@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     //auto-login
-    fetch("/me").then((r) => {
+    fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => {setUser(user)});
       }
@@ -49,9 +49,6 @@ function addJournalEntry(newEntry) {
   if (!user) return <LogInPage onLogin={onLogIn} />
 
   return (
-    // <div className="App">
-    //   <h1>Page Count: {count}</h1>
-    // </div>
     <>
       <NavBar user={user} setUser={setUser}/>
       <main>
@@ -66,10 +63,3 @@ function addJournalEntry(newEntry) {
 }
 
 export default App;
-
-// cursor parking lot
-// -------------------
-// |                 |
-// |                 | 
-// |                 |
-// -------------------

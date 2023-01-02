@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-    # skip_before_action :authorize, only: [:create]
-    skip_before_action :authorize
+    skip_before_action :authorize, only: [:create]
+    # skip_before_action :authorize
   
 
     # https://stackoverflow.com/questions/49165196/nomethoderror-in-sessionscontrollerdestroy
@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       if user&.authenticate(params[:password])
         session[:user_id] = user.id
         puts "user: #{session[:user_id]}"
+        puts "session to hash: #{session.to_hash}"
         render json: user, status: :ok
       else
         render json: { errors: ["Invalid username or password"] }, status: :unauthorized
@@ -20,14 +21,5 @@ class SessionsController < ApplicationController
       session.delete :user_id
       head :no_content
     end
-
-    # def destroy 
-    #     if current_user 
-    #         session.delete :current_user
-    #         head :no_content
-    #     else
-    #         render json: {errors: "No active session"}, status: :unauthorized
-    #     end
-    # end
 
 end
