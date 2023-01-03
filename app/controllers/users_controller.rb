@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    # skip_before_action :authorize, only: [:create]
-    skip_before_action :authorize
+    skip_before_action :authorize, only: [:create]
+    # skip_before_action :authorize
 
     def index
       render json: User.all
@@ -14,8 +14,10 @@ class UsersController < ApplicationController
     end
   
     def show
-        user = User.find_by(id: session[:user_id])
-        puts "***params***: #{params}"
+      puts "***session user id ***: #{user}"
+      user = User.find_by(id: session[:user_id])
+
+      puts "session to hash: ******  #{session.to_hash}"
         if user
           render json: user, status: :ok
         else

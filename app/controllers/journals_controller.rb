@@ -1,6 +1,6 @@
 class JournalsController < ApplicationController
-    # skip_before_action :authorize, only: [:create]
-    skip_before_action :authorize
+    skip_before_action :authorize, only: [:create]
+    # skip_before_action :authorize
 
 
     def index
