@@ -2,10 +2,6 @@
 # Being Present | Daily Photo Journal App
 An app to encourage you to be present with yourself and record those moments daily.
 
-## Project Video
-
-## Project Screenshot
-
 ## Features
 * Authentication and authorization features that allows users to sing in or create an account.
 * Create a journal log saved to the local database.
