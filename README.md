@@ -11,8 +11,8 @@ An app to encourage you to be present with yourself and record those moments dai
 * JavaScript
 * React
 * Bootstrap
-* Python
-* Flask
+* Ruby
+* Rails
 
 ## Getting Started
 
@@ -20,6 +20,7 @@ An app to encourage you to be present with yourself and record those moments dai
 - Ruby 2.7.4
 - NodeJS (v16), and npm
 - Postgresql
+- Bootstrap 5.2.2
 
 See Environment Setup below for instructions on installing these tools if you
 don't already have them.
